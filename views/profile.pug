@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  form(method="post" action="profile/post")
+    table
+        tr
+          td 您的帳號名稱：
+          td= username
+        tr
+          td Email：
+          td
+            input#email(type="email" name="email" required value=email)
+        tr
+          td 電話號碼：
+          td
+            input#tel_number(type="text" name="tel_number" value=tel_number)
+        tr
+          td 傳真號碼：
+          td
+            input#fax_number(type="text" name="fax_number" value=fax_number)
+        tr
+          td 確認修改
+          td
+            button(type="submit") 送出
+        
+        

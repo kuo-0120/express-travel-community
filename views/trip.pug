@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    div.contact-list
+        div.gallery
+            each n in results
+                div.gallery-item
+                    a(href=`trip/show_trip?trip_ID=${n.ID}`)
+                        h3= n.trip_name 
+                        img(src=n.img_url)
+                        p= n.intro
+                        form(method='get' action='trip/delete')
+                            button(name="trip_ID" value=n.ID) 刪除
+                        
+    h2 新增trip
+    div.bulletin-form-container
+        form#addBulletinForm(method="post" action="trip/add")
+            div.bulletin-form-group
+                label(for="trip_name") 地點名稱:
+                input#trip_name(type="text" name="trip_name" required)
+            div.bulletin-form-group
+                label(for="intro") 介紹內容:
+                input#intro(type="text" name="intro" required)
+            div.bulletin-form-group
+                label(for="img_url") 附圖連結:
+                input#intro(type="text" name="img_url" required)
+            div.bulletin-form-group
+                button(type="submit") 送出

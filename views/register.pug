@@ -1,0 +1,24 @@
+extends layout
+
+block content
+    h3.err_text= err_text
+    div.container
+        h2 註冊
+        form#loginForm(method="post" action="register/post")
+            div.form-group
+                label(for="username") 帳號名稱:
+                input#username(type="text" name="username" required)
+            div.form-group
+                label(for="password") 密碼:
+                input#password(type="password" name="password" required)
+            div.form-group
+                label(for="email") Email:
+                input#email(type="email" name="email" required)
+            div.form-group
+                label(for="tel_number") 電話:
+                input#tel_number(type="text" name="tel_number")
+            div.form-group
+                label(for="fax_number") 傳真:
+                input#fax_number(type="text" name="fax_number")
+            div.form-group
+                button(type="submit") 送出

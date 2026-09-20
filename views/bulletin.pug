@@ -1,0 +1,37 @@
+extends layout
+
+block content
+    div.contact-list
+        h2 佈告欄
+        table 
+            tr 
+                td 發佈單位
+                td 內容
+                td 刪除
+                td 編輯
+            each n in results
+                tr
+                    td
+                        label= n.username
+                    td
+                        label= n.bulletin_text
+                    td
+                        span
+                            form(method='get' action='bulletin/delete')
+                                button(name="bulletin_ID" value=n.ID) 刪除
+                    td
+                        span
+                            form(method='post' action='bulletin/modify')
+                                button(name="bulletin_ID" value=n.ID) 編輯
+                        
+    h2 新增公佈事項
+    div.bulletin-form-container
+        form#addBulletinForm(method="post" action="bulletin/add")
+            div.bulletin-form-group
+                label(for="username") 發佈單位:
+                input#username(type="text" name="username" required)
+            div.bulletin-form-group
+                label(for="bulletinText") 內容:
+                input#bulletinText(type="text" name="bulletinText" required)
+            div.bulletin-form-group
+                button(type="submit") 送出

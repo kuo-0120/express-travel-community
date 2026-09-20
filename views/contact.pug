@@ -1,0 +1,55 @@
+extends layout
+
+block content
+    div.contact-list
+        h2 通訊錄
+        table 
+            tr 
+                td 名稱
+                td 電話
+                td 傳真
+                td email
+                td 備註
+                td 刪除
+                td 編輯
+            each n in results
+                tr
+                    td
+                        label= n.unit_name
+                    td
+                        label= n.tel_number
+                    td
+                        label= n.fax_number
+                    td
+                        label= n.email
+                    td
+                        label= n.remark
+                    td
+                        span
+                            form(method='get' action='contact/delete')
+                                button(name="contact_ID" value=n.ID) 刪除
+                    td
+                        span
+                            form(method='post' action='contact/modify')
+                                button(name="contact_ID" value=n.ID) 編輯
+                        
+    h2 新增聯絡人
+    div.bulletin-form-container
+        form#addBulletinForm(method="post" action="contact/add")
+            div.bulletin-form-group
+                label(for="unit_name") 名稱:
+                input#unit_name(type="text" name="unit_name" required)
+            div.bulletin-form-group
+                label(for="tel_number") 電話:
+                input#tel_number(type="text" name="tel_number" )
+            div.bulletin-form-group
+                label(for="fax_number") 傳真:
+                input#fax_number(type="text" name="fax_number" )
+            div.bulletin-form-group
+                label(for="email") 電子信箱:
+                input#email(type="text" name="email" )
+            div.bulletin-form-group
+                label(for="remark") 備註:
+                input#remark(type="text" name="remark" )
+            div.bulletin-form-group
+                button(type="submit") submit

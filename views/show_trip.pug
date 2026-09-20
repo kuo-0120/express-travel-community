@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    div.contact-list
+        each n in results
+            h3= n.trip_name 
+            img.show_trip_img(src=n.img_url)
+            p= n.intro
+        a(href="/trip") 
+            h2 回到trip

@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    h2 修改佈告事項
+    div.bulletin-form-container
+        each n in results
+            form#addBulletinForm(method="post" action=`./send_modify?bulletin_ID=${n.ID}`)
+                div.bulletin-form-group
+                    label(for="username") 發布單位:
+                    input#username(type="text" name="username" value = n.username required )
+                div.bulletin-form-group
+                    label(for="bulletin_text") 內容:
+                    input#bulletin_text(type="text" name="bulletin_text" value = n.bulletin_text required)
+                div.bulletin-form-group
+                    button(type="submit") 確認送出

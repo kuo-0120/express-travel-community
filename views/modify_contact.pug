@@ -1,0 +1,24 @@
+extends layout
+
+block content
+    h2 修改聯絡人
+    div.bulletin-form-container
+        each n in results
+            form#addBulletinForm(method="post" action=`./send_modify?contact_ID=${n.ID}`)
+                div.bulletin-form-group
+                    label(for="unit_name") 聯絡人:
+                    input#unit_name(type="text" name="unit_name" value = n.unit_name required )
+                div.bulletin-form-group
+                    label(for="tel_number") 電話:
+                    input#tel_number(type="text" name="tel_number" value = n.tel_number required)
+                div.bulletin-form-group
+                    label(for="fax_number") 傳真:
+                    input#fax_number(type="text" name="fax_number" value = n.fax_number required)
+                div.bulletin-form-group
+                    label(for="email") 電子信箱:
+                    input#email(type="text" name="email" value = n.email required)
+                div.bulletin-form-group
+                    label(for="remark") 備註:
+                    input#remark(type="text" name="remark" value = n.remark required)
+                div.bulletin-form-group
+                    button(type="submit") 確認送出
